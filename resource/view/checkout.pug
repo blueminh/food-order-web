@@ -1,0 +1,49 @@
+extends layout/main-layout.pug 
+
+block style
+    link(rel="stylesheet", href="/css/checkout.css")
+
+block title
+    title Check Out
+
+
+block content   
+   
+
+    div.productlist
+        p(id='title') Your Orders
+        div.products
+            p(style=" margin-left:25%; font-size:20px") Price($)
+            p(style=" font-size:20px") Quantity
+        - var i = 0     
+        each products in data
+                - var index = i
+                div.products(id=index) 
+                    div.product_info
+                        - var url =  products.url
+                        img(src= url, alt="lmao")
+                        .product_name #{products.name}
+                        .product_price #{products.price} 
+                            
+                        - i = i +1
+                    div.pricing
+                        p.price 0
+                        button.up +
+                        button.down -
+                        p.quantity 0
+                        
+
+        .total
+            p.totalprice Total($) : 
+            p(class='totalprice' id='totalprice') 0
+        
+        form(name="ckform",action='/done', onsubmit="submitForm();", method="POST")
+            input(type="hidden",name='ckinput', value="10000")
+            input(type="submit" ,value="BUY NOW")
+
+
+
+block script
+    <script src="/script/checkout.js"></script>
+    
+        

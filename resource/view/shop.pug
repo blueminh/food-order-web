@@ -1,0 +1,39 @@
+extends layout/main-layout.pug 
+
+block style
+    link(rel="stylesheet", href="/css/shop.css")
+
+block title
+    title Shop
+
+
+block content   
+    //- .order-list
+    //-     p You have orderd: 
+    //-     .orders
+    //- div
+    //-     form(name="ckform",action='/checkout', onsubmit="submitForm();", method="POST")
+    //-         input(type="hidden",name='ckinput', value="10000")
+    //-         input(type="submit" ,value="Check Out")
+        
+    div.productlist
+        - var i = 0     
+        each products in data
+                - var index = i
+                div.products(id=index) 
+                    - var url =  products.url
+                    img(src= url, alt="lmao")
+                    .product_name #{products.name}
+                    .product_price Price: $#{products.price} 
+                    div.foot
+                        button.detail_btn 
+                            -var href = "/shop/" + products.id
+                            a(href=href) Details
+                        button.add_btn Add to cart
+                    - i = i +1
+
+
+block script
+    <script src="/script/shop.js"></script>
+    
+        
