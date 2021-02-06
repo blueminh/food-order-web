@@ -8,13 +8,14 @@ block title
 
 
 block content   
-    //- .order-list
-    //-     p You have orderd: 
-    //-     .orders
-    //- div
-    //-     form(name="ckform",action='/checkout', onsubmit="submitForm();", method="POST")
-    //-         input(type="hidden",name='ckinput', value="10000")
-    //-         input(type="submit" ,value="Check Out")
+    .order-list
+        p You have orderd: 
+        .orders
+    div
+        form(name="ckform",action='/checkout', onsubmit="submitForm();", method="POST")
+            input(type="hidden",name='ckinput', value="")
+            input(type="hidden" name="_csrf" value=csrfToken )
+            input(type="submit" ,value="Check Out")
         
     div.productlist
         - var i = 0     
@@ -27,8 +28,8 @@ block content
                     .product_price Price: $#{products.price} 
                     div.foot
                         button.detail_btn 
-                            -var href = "/shop/" + products.id
-                            a(href=href) Details
+                            -var href = "/shop/" + products._id
+                            a(href=href id='detailbtn') Details
                         button.add_btn Add to cart
                     - i = i +1
 

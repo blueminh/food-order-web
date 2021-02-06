@@ -6,7 +6,7 @@ const Product = require('../models/product_model')
 // Get the default Add Product page
 exports.addProduct_get = (req, res) =>{
     // render() takes path which is initiallized by app.set(views) in app.js 
-    res.render('addproduct')
+    res.render('addproduct',{isLoggedIn:true, csrfToken:req.csrfToken()})
 }
 
 
@@ -17,7 +17,12 @@ exports.addProduct_post = (req, res) =>{
     product.saveProduct()
     // Only redirect when product is successfully saved
     .then( () => res.redirect('/shop'))
-    .catch(err => console.log(err))
+    .catch(
+        err => {
+            console.log(err)
+            res.redirect('/500')
+        }
+    )
 }
 
 

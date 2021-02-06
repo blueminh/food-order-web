@@ -11,12 +11,19 @@ html(lang="en")
         header
             nav.navbar
                 div.navbar-item
-                    a(href="/shop") Shop
-                div.navbar-item
-                    a(href="/cart") Your Cart
-                div.navbar-item
-                    a(href="/add-product") Add Product    
-
+                    a(href="/shop") Shop của Minh Đẹp Trai
+                //- div.navbar-item
+                //-     a(href="/cart") Your Cart
+                if isLoggedIn == true 
+                    div.navbar-item
+                        a(href="/add-product") Add Product 
+                    div.navbar-item
+                        a(href="/logout") Log out
+                else
+                    div.navbar-item
+                        a(href="/login") Log in
+                    div.navbar-item
+                        a(href="/signup") Sign Up
         block content               
         
         block script

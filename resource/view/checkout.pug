@@ -40,6 +40,7 @@ block content
         form(name="ckform",action='/done', onsubmit="submitForm();", method="POST")
             input(type="hidden",name='ckinput', value="10000")
             input(type="submit" ,value="BUY NOW")
+            input(type="hidden" name="_csrf" value=csrfToken )
 
 
 

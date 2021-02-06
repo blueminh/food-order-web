@@ -6,49 +6,42 @@ let price = document.getElementsByClassName('price')
 let quant = document.getElementsByClassName('quantity')
 let totalprice = document.getElementById('totalprice')
 let submitbtn = document.getElementById('submitbtn')
-const datatoSent = []
 
+
+const newquantity = [0]
+const newprice = []
+const newname = []
+const datatoSent = [newname, newquantity]
 
 
 
 for(let i = 0; i<btndown.length;i++){
+    newquantity.push(0)
+    newprice.push(parseInt(product_price[i].textContent))
+    newname.push(product_name[i].textContent)
     btnup[i].addEventListener('click',()=>{
-        newquant = parseInt(quant[i].textContent) + 1
-        quant[i].textContent = newquant
-        product_price_int = parseInt(product_price[i].textContent) 
-        newprice =  product_price_int * newquant
-        price[i].textContent = newprice
-        totalprice.textContent = parseInt(totalprice.textContent) + product_price_int
+        newquantity[i+1] += 1
+        quant[i].textContent = newquantity[i+1]
+        price[i].textContent = newprice[i]*newquantity[i+1]
+        newquantity[0] += newprice[i]
+        totalprice.textContent = newquantity[0]
     })
 
     btndown[i].addEventListener('click',()=>{
-        console.log('click')
-
-        newquant = parseInt(quant[i].textContent) - 1
-        if(newquant!==-1){
-            quant[i].textContent = newquant
-
-            product_price_int = parseInt(product_price[i].textContent) 
-            newprice =  product_price_int * newquant
-            price[i].textContent = newprice
-            totalprice.textContent = parseInt(totalprice.textContent) - product_price_int
+        if(newquantity[i+1]!==0){
+            newquantity[i+1] -= 1
+            quant[i].textContent = newquantity[i+1]
+            price[i].textContent = newprice[i]*newquantity[i+1]
+            newquantity[0] -= newprice[i]
+            totalprice.textContent = newquantity[0]
         }
-
     })
     
 }
 
 
 function submitForm(){
-    for(i = 0; i<btndown.length;i++){
-        q = quant[i].textContent
-        if(q!=='0'){
-            datatoSent.push([product_name[i].textContent,q])
-        }
-    }
-    datatoSent.push(totalprice.textContent)
     document.ckform.ckinput.value = datatoSent;
-    console.log(document.ckform.ckinput.value)
 }
 
 

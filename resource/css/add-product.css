@@ -59,14 +59,22 @@ label{
     background-color:blanchedalmond;
     border-color: orangered;
 }
+
 .navbar{
     display: flex;
 }
 
 .navbar-item{
-    padding: 2% 5% 2% 5%;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 10px 30px 10px 30px;
     
+}
+
+.productlist{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: whitesmoke
 }
 
 .content{

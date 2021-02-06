@@ -1,0 +1,14 @@
+extends layout/main-layout.pug
+
+block title 
+    title TESTING
+
+block style 
+    link(rel="stylesheet", href="/css/add-product.css")
+
+block content
+    if rightUser
+        a(href=link) Click here to reset password
+    else 
+        div No username 
+                

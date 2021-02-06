@@ -1,0 +1,20 @@
+extends layout/main-layout.pug
+
+block title 
+    title Log in
+ 
+
+block style
+    link(rel="stylesheet", href="/css/add-product.css")
+
+block content 
+    form(action='/login' method='POST')
+        if wrongUserOrPassword
+            div Wrong Username Or Password
+        label User name
+        input.user-input(type="text" name = "username") 
+        label Password
+        input.user-input(type="text" name = "password")
+        input(type="hidden" name="_csrf" value=csrfToken )
+        a(href='/resetpassword') Forgot Password?
+        button.btn(type="submit") Log in

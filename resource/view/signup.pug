@@ -1,0 +1,28 @@
+extends layout/main-layout.pug
+
+block title 
+    title Sign up
+ 
+
+block style
+    link(rel="stylesheet", href="/css/add-product.css")
+
+block content 
+    form(action='/signup' method='POST')
+        if hasError
+            - var oldEmail = oldInput.email
+            - var oldUsername = oldInput.username
+            
+            for errormsg in errorMessages 
+                div #{errormsg.msg}
+           
+        label User name
+        input.user-input(type="text" name = "username" value=oldUsername)
+        label Email
+        input.user-input(type="text" name = "email" value=oldEmail)  
+        label Password
+        input.user-input(type="text" name = "password")
+        label Comfirm Password
+        input.user-input(type="text" name = "cfpassword")
+        input(type="hidden" name="_csrf" value=csrfToken )
+        button.btn(type="submit") Sign up
