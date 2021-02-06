@@ -1,1 +1,5 @@
-Lmao
+You have to install Nodejs in your machine
+
+Install all packages in package.json with Nodejs
+
+Command to start server: npm start
