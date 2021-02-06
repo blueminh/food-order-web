@@ -5,7 +5,7 @@ let dbconnection
 const mongoConnect = (callbackFunc) => {
     // The callbackFunc is intended to be  app.listen()
     MongoClient.connect(
-        'mongodb+srv://tigerminh789:13Pr0rgo8vz3NAdg@cluster0.7waur.mongodb.net/foodorder?retryWrites=true&w=majority',
+        'connection here',
         {useNewUrlParser: true, useUnifiedTopology: true}
     ).then( (connection) => {
         // MongoClient.connect() returns a connection object
@@ -23,5 +23,3 @@ const getdbconnection = ()=>{
 
 exports.mongoConnect = mongoConnect
 exports.getdbconnection = getdbconnection
-//13Pr0rgo8vz3NAdg
-//mongo "mongodb+srv://cluster0.7waur.mongodb.net/foodorder" --username tigerminh789
